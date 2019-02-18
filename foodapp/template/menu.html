@@ -1,1 +1,7 @@
-<li><a href="{% url 'foodapp:' %}">{{res.restaurant_text}}<br><br></a></li>
+<h1>You search is : {{get_menu.restaurant_text}}</h1>
+
+{% for menu in get_menu.menu_set.all %}
+<label for="menu{{ forloop.counter }}"></label>{{ menu.menu_text }} {{menu.price_text}}</label><br>
+{% endfor %}
+
+

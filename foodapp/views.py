@@ -22,13 +22,20 @@ def show_typefood(request):
     }
     return render(request, 'typefood.html', context)
 
-def show_menu(request, restaurant_id):
+def search_res(request):
+    get_search = request.POST['search']
     try:
-        menu = Restaurant.objects.get(pk=restaurant_id)
-    except Restaurant.DoesNotExist:
-        raise Http404("Restaurant does not menu.")
-    context = {
-        'menu' : menu
-    }
-    return render(request, 'menu.html', context)
+        check_search = Restaurant.objects.get(restaurant_text=get_search)
+    except (KeyError, Restaurant.DoesNotExist):
+        return render(request, 'search.html', {
+            'error_message' : "No restaurants found"
+        })
+    else:
+        get_id = check_search.id
+        get_menu = Restaurant.objects.get(pk=get_id)
+        return render(request, 'menu.html', {
+        'get_res' : get_search,
+        'get_menu' : get_menu
+    })
+    return render(request, 'index.html')
 

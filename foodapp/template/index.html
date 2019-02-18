@@ -84,10 +84,10 @@ body {
   <a class="active" href="{% url 'foodapp:index' %}"">Home</a>
   <a href="{% url 'foodapp:allres' %}">Restaurant</a>
   <a href="{% url 'foodapp:typefood' %}">Type Food</a>
-  <div class="search-container">
-    <form action="/action_page.php">
+    <form action="{% url 'foodapp:search' %}" method="POST">
+      {% csrf_token %}
       <input type="text" placeholder="Search Name Restaurant..." name="search">
-      <button type="submit">Submit</button>
+      <input type="submit" value="submit">
     </form>
   </div>
 </div>
