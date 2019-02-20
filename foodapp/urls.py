@@ -6,7 +6,8 @@ urlpatterns = [
     path('index/', views.index, name='index'),
     path('Allrestaurant/', views.show_res, name='allres'),
     path('typefood/', views.show_typefood, name='typefood'),
-    path('search/', views.search_res, name='search')
+    path('search/', views.search_res, name='search'),
+    path('review/', views.add_review, name='addreview')
 ]
 
 

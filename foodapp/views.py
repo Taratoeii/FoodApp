@@ -39,3 +39,21 @@ def search_res(request):
     })
     return render(request, 'index.html')
 
+def add_review(request):
+    # get_name = request.POST['get_res']
+    # get_review = request.POST['get_review']
+    # get_score = request.POST['get_point']
+    # get_date = request.POST['get_date']
+    # try :
+    #     check_name = Restaurant.objects.get(restaurant_text=get_name)
+    # except (KeyError, Restaurant.DoesNotExist):
+    #     return render(request, 'add_review.html', {
+    #         'error_message' : "No restaurants found"
+    #     })
+    # else:
+    #     get_id = check_name.id
+    #     get_pk = Restaurant.objects.get(pk=get_id)
+    #     review = get_pk.review_set.create(review_text="get_review",score="get_score",review_date="get_date")
+    #     review.save()
+    return render(request, 'add_review.html')
+
