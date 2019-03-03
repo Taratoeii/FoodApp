@@ -1,20 +1,17 @@
 <h1>Add Review Restaurant</h1>
-    <from action="" method="post">
+    <from action="{% url 'foodapp:review' %}" method="post">
     {% csrf_token %}
         <a>Input name of restaurant : 
-            <input type="text" name="get_res" /> <br /></a>
-        <br>
-        <a>Input Date :
-            <input type="date" name="get_date" /> <br /></a>
+            <input type="text" name="nameres" > <br /></a>
         <br>
         <a>Input text of review :
-            <textarea wrap="virtual" name="get_review" rows="20" cols="70"></textarea>
+            <textarea wrap="virtual" name="review" rows="20" cols="70"></textarea>
         <br>
+        <a>Input point of restaurant (1-5) :
+            <input type="text" name="point" > <br /></a>
         <br>
-         <a>Input point of restaurant (1-5) :
-            <input type="text" name="get_point" /> <br /></a>
-        <br>
-    
     </h1>
     </from>
-    <input type="submit" value="Submit" />
+    <input type="submit" value="submit" >
+
+

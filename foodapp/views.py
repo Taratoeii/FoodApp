@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404, render, HttpResponse
 from .models import Restaurant, Menu, Review, Typefood
 from django.http import Http404
+import datetime
+from django.utils import timezone
 
 # Create your views here.
 
@@ -22,38 +24,32 @@ def show_typefood(request):
     }
     return render(request, 'typefood.html', context)
 
+def show_menu(request,id):
+    menu = get_object_or_404(Restaurant, pk=id)
+    return render(request, 'menu.html', {'menu': menu})
+
+def show_restype(request,id):
+    typefood = get_object_or_404(Typefood, pk=id)
+    return render(request, 'res_type.html', {'typefood': typefood})
+
 def search_res(request):
-    get_search = request.POST['search']
-    try:
-        check_search = Restaurant.objects.get(restaurant_text=get_search)
-    except (KeyError, Restaurant.DoesNotExist):
-        return render(request, 'search.html', {
-            'error_message' : "No restaurants found"
-        })
-    else:
-        get_id = check_search.id
-        get_menu = Restaurant.objects.get(pk=get_id)
-        return render(request, 'menu.html', {
-        'get_res' : get_search,
-        'get_menu' : get_menu
-    })
-    return render(request, 'index.html')
+    findres = (request.POST['search'])
+    res_list = Restaurant.objects.values_list("id" , "restaurant_text").filter(restaurant_text__contains = findres)
+    count = len(res_list)
+    context = {
+        'res_list':res_list,
+        'count':count,
+        'res':findres}
+    return render(request, 'show_search.html',context)
 
 def add_review(request):
-    # get_name = request.POST['get_res']
-    # get_review = request.POST['get_review']
-    # get_score = request.POST['get_point']
-    # get_date = request.POST['get_date']
-    # try :
-    #     check_name = Restaurant.objects.get(restaurant_text=get_name)
-    # except (KeyError, Restaurant.DoesNotExist):
-    #     return render(request, 'add_review.html', {
-    #         'error_message' : "No restaurants found"
-    #     })
-    # else:
-    #     get_id = check_name.id
-    #     get_pk = Restaurant.objects.get(pk=get_id)
-    #     review = get_pk.review_set.create(review_text="get_review",score="get_score",review_date="get_date")
-    #     review.save()
-    return render(request, 'add_review.html')
+    get_name = (request.POST['nameres'])
+    get_review = (request.POST['review'])
+    get_score = int(request.POST['point'])
+    review = Review(name_text="get_name",review_text="get_review",score="get_score",review_date=timezone.now())
+    review.save()
+    context = {
+        'review' : review
+    }
+    return render(request, 'add_review.html',context)
 

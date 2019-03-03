@@ -1,0 +1,8 @@
+<head><h1>{{typefood.typefood_text}}</h1></head>
+<body>
+        {% for res in typefood.restaurant_set.all %}
+             <li><a href="{% url 'foodapp:menu' res.id %}">{{res.restaurant_text}}</a></li>
+            <br>
+        {% endfor %}
+</body>
+</html>

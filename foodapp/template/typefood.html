@@ -95,7 +95,7 @@ body {
 {% if typefood %}
     <ul>
     {% for type in typefood %}
-        <li><a href="{% url 'foodapp:typefood' %}">{{type.typefood_text}}<br><br></a></li>
+        <li><a href="{% url 'foodapp:typeres' type.id %}">{{type.typefood_text}}<br><br></a></li>
     {% endfor %}
     </ul>
 {% endif %}

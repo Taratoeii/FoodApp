@@ -1,7 +1,8 @@
-<h1>You search is : {{get_menu.restaurant_text}}</h1>
-
-{% for menu in get_menu.menu_set.all %}
-<label for="menu{{ forloop.counter }}"></label>{{ menu.menu_text }} {{menu.price_text}}</label><br>
-{% endfor %}
-
-
+<head><h1>{{menu.restaurant_text}}</h1></head>
+<body>
+        {% for menu in menu.menu_set.all %}
+            <li><a> {{menu.menu_text}} {{menu.price_text}}</a></li>
+            <br>
+        {% endfor %}
+</body>
+</html>

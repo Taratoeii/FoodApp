@@ -95,7 +95,7 @@ body {
 {% if show_res %}
     <ul>
     {% for res in show_res %}
-        <li><a href="{% url 'foodapp:allres' %}">{{res.restaurant_text}}<br><br></a></li>
+        <li><a href="{% url 'foodapp:menu' res.id %}">{{res.restaurant_text}}<br><br></a></li>
     {% endfor %}
     </ul>
 {% endif %}

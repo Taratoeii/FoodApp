@@ -26,7 +26,8 @@ class Menu(models.Model):
         return self.menu_text
 
 class Review(models.Model):
-    restaurant = models.ForeignKey(Restaurant,default="",on_delete=models.CASCADE)
+    review_res = models.ForeignKey(Restaurant,default="",on_delete=models.CASCADE)
+    name_text = models.CharField(max_length=200,default="")
     review_text = models.CharField(max_length=1000,default="")
     review_date = models.DateTimeField('date published')
     score = models.IntegerField(default=0)

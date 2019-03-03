@@ -7,7 +7,9 @@ urlpatterns = [
     path('Allrestaurant/', views.show_res, name='allres'),
     path('typefood/', views.show_typefood, name='typefood'),
     path('search/', views.search_res, name='search'),
-    path('review/', views.add_review, name='addreview')
+    path('review/', views.add_review, name='review'),
+    path('<int:id>/menu/', views.show_menu, name='menu'),
+    path('<int:id>/restype/', views.show_restype, name='typeres'),
 ]
 
 
