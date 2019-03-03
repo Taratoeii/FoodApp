@@ -42,6 +42,16 @@ def search_res(request):
         'res':findres}
     return render(request, 'show_search.html',context)
 
+def detailres(request,id):
+    res = get_object_or_404(Restaurant, pk=id)
+    review = Review.objects.values_list("review_res_id","name_text","review_text","review_date","score").filter(review_res_id=id)
+    context = {
+        'res' : res,
+        'review' : review
+    }
+    return render(request, 'detailres.html',context)
+
+
 def add_review(request):
     get_name = (request.POST['nameres'])
     get_review = (request.POST['review'])

@@ -1,7 +1,7 @@
 <head><h1>You search is "{{res}}"  : {{count}}</h1></head>
 <body>
         {% for res in res_list %}
-            <li><a href="{% url 'foodapp:allres' %}">{{res}}</a></li>
+            <li><a href="{% url 'foodapp:detail' res.0 %}">{{res.1}}</a></li>
             <br>
         {% endfor %}
 </body>
