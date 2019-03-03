@@ -1,7 +1,12 @@
 <head><h1>{{menu.restaurant_text}}</h1></head>
-<body>
+<body>  
+        <table width=90% style="border:1px dashed black;" cellspacing="5" bgcolor="white" cellpadding="5"><tr><td style="border:1px dashed white;" bgcolor="white">
+        สถานที่ : {{menu.place_text}} <br>
+        เวลาเปิดปิด : {{menu.time_text}}
+        </td></tr></table>
+        <br>
         {% for menu in menu.menu_set.all %}
-            <li><a> {{menu.menu_text}} {{menu.price_text}}</a></li>
+            <li><a> {{menu.menu_text}} {{menu.price_text}} </a></li>
             <br>
         {% endfor %}
 </body>

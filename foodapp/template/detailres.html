@@ -1,3 +1,4 @@
+
 <head><h1>{{res.restaurant_text}}</h1></head>
 <body>
         <B>Review Restaurant</B>
@@ -7,7 +8,7 @@
         {% endfor %}
         <br> -->
         {% for review in review %}
-        <table width=90% style="border:1px dashed #ffaacc;" cellspacing="5" bgcolor="#ffaacc" cellpadding="5"><tr><td style="border:1px dashed white;" bgcolor="white">
+        <table width=90% style="border:1px dashed black;" cellspacing="5" bgcolor="#ffaacc" cellpadding="5"><tr><td style="border:1px dashed white;" bgcolor="white">
         ชื่อ : {{review.1}} วันที่ : {{review.3}} <br>
         <br> {{review.2}} <br>
         <br> คะแนน : {{review.4}} คะแนน
@@ -16,7 +17,7 @@
         {% endfor %}
 </body>
 </html>
-
+<b>------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</b>
 <form action="{% url 'foodapp:review' %}" method="post" >
         {% csrf_token %}
         <div style="display:none">

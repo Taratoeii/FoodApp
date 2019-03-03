@@ -12,7 +12,9 @@ class Typefood(models.Model):
 class Restaurant(models.Model):
     restaurant_text = models.CharField(max_length=200,default="")
     typefood = models.ForeignKey(Typefood,default="",on_delete=models.CASCADE)
-    
+    place_text = models.CharField(max_length=200,default="")
+    time_text = models.CharField(max_length=200,default="")
+
     def __str__(self):
         return self.restaurant_text
 
