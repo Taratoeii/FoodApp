@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404, render, HttpResponse
 from .models import Restaurant, Menu, Review, Typefood
 from django.http import Http404
@@ -53,13 +53,12 @@ def detailres(request,id):
 
 
 def add_review(request):
-    get_name = (request.POST['nameres'])
-    get_review = (request.POST['review'])
-    get_score = int(request.POST['point'])
-    review = Review(name_text="get_name",review_text="get_review",score="get_score",review_date=timezone.now())
-    review.save()
-    context = {
-        'review' : review
-    }
-    return render(request, 'add_review.html',context)
+    nameres = str(request.POST['res'])
+    nameuser = str(request.POST['user'])
+    review = str(request.POST['review'])
+    score = int(request.POST['point'])
+    reviewres = Review(review_res_id=nameres,name_text=nameuser,review_text=review,review_date=timezone.now(),score=score)
+    reviewres.save()
+    return redirect('foodapp:detail',nameres)
+
 

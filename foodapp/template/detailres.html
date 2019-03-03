@@ -1,10 +1,11 @@
 <head><h1>{{res.restaurant_text}}</h1></head>
 <body>
-        {% for menu in res.menu_set.all %}
+        <B>Review Restaurant</B>
+        <!-- {% for menu in res.menu_set.all %}
             <li><a> {{menu.menu_text}} {{menu.price_text}}</a></li>
             <br>
         {% endfor %}
-        <br>
+        <br> -->
         {% for review in review %}
         <table width=90% style="border:1px dashed #ffaacc;" cellspacing="5" bgcolor="#ffaacc" cellpadding="5"><tr><td style="border:1px dashed white;" bgcolor="white">
         ชื่อ : {{review.1}} วันที่ : {{review.3}} <br>
@@ -15,3 +16,26 @@
         {% endfor %}
 </body>
 </html>
+
+<form action="{% url 'foodapp:review' %}" method="post" >
+        {% csrf_token %}
+        <div style="display:none">
+    <input type="hidden" name="res" value= {{res.id}}>
+    </div>
+    <h4>Add Review Restaurant</h4>
+    <a>Input your name : 
+        <input type="text" name="user" > <br /></a>
+    <br>
+    <a>Input text of review :<br><br>
+        <textarea wrap="virtual" name="review" rows="25" cols="100">
+        </textarea>
+    <br>
+    <br>
+    <a>Input point of restaurant (1-5) :
+        <input type="text" name="point" > <br /></a>
+    <br>
+    <br>
+    <br>
+    <input type="submit" value="Submit" />
+    <input type="reset" value="Reset" />
+        </form>
